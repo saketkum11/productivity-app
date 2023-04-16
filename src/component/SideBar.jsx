@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BiStopwatch } from "react-icons/bi";
+import { FiSettings } from "react-icons/fi";
+import { RxAvatar } from "react-icons/rx";
+import { MdAddTask } from "react-icons/md";
 const SideBar = () => {
   return (
     <div className="grid gap-5 mt-9 ">
@@ -8,12 +12,40 @@ const SideBar = () => {
           Pomo
         </h2>
       </Link>
-      <nav className="mt-8 text-xl">
-        <ul className="flex gap-12 flex-col">
-          <li>Timer</li>
-          <li>Tasks</li>
-          <li>Setting</li>
-          <li>Login</li>
+      <nav className="mt-8 text-md">
+        <ul className="flex flex-col gap-9">
+          <li className="hover:bg-cyan-200 hover:text-white py-4 px-2 hover:rounded-md focus:text-cyan-400">
+            <Link className="flex items-center gap-4 " to="/">
+              <span className="text-4xl">
+                <BiStopwatch />
+              </span>
+              <span>Timer</span>
+            </Link>
+          </li>
+          <li className="hover:bg-cyan-200 hover:text-white py-4 px-2 hover:rounded-md focus:text-cyan-400">
+            <Link className="flex items-center gap-4" to="task">
+              <span className="text-4xl">
+                <MdAddTask />
+              </span>
+              <span>Tasks</span>
+            </Link>
+          </li>
+          <li className="hover:bg-cyan-200 hover:text-white py-4 px-2 hover:rounded-md focus:text-cyan-400">
+            <Link className="flex items-center gap-4" to="setting">
+              <span className="text-4xl">
+                <FiSettings />
+              </span>
+              <span>Setting</span>
+            </Link>
+          </li>
+          <li className="hover:bg-cyan-200 hover:text-white py-4 px-2 hover:rounded-md focus:text-cyan-400">
+            <Link className="flex items-center gap-4" to="login">
+              <span className="text-4xl">
+                <RxAvatar />
+              </span>
+              <span>Login</span>
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
