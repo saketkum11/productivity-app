@@ -4,7 +4,7 @@ import { BiReset } from "react-icons/bi";
 const Timer = () => {
   return (
     <div>
-      <section className="grid  justify-center  items-center">
+      <section className="grid justify-center items-center">
         <section className="p-4 flex flex-col items-center my-10 justify-center ">
           <div className="h-72 w-72  rounded-full border-8 flex flex-col justify-center border-cyan-400">
             <div className="flex justify-center items-center  text-7xl ">
