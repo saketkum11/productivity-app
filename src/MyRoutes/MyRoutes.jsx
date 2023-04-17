@@ -11,8 +11,8 @@ const MyRoutes = () => {
           <Route path="task" element={<Task />}></Route>
           <Route path="setting" element={<Setting />}></Route>
         </Route>
-        <Route path="login" element={<Login />}></Route>
-        <Route path="signup" element={<Signup />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
       </Routes>
     </>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Task = () => {
-  return <div>Task</div>;
+  return <div></div>;
 };
 
 export { Task };
