@@ -1,5 +1,5 @@
 import React from "react";
-import { SideBar } from "../server";
+import { Footer, SideBar } from "../server";
 import { Outlet } from "react-router-dom";
 
 const HomeLayout = () => {
@@ -11,6 +11,7 @@ const HomeLayout = () => {
         </aside>
         <main className="col-span-5  p-5">
           <Outlet />
+          <Footer />
         </main>
       </div>
     </>

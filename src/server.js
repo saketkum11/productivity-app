@@ -6,5 +6,17 @@ import { Setting } from "./pages/Setting";
 import { MyRoutes } from "./MyRoutes/MyRoutes";
 import { HomeLayout } from "./Layout/HomeLayout";
 import { SideBar } from "./component/SideBar";
-
-export { Signup, Login, Timer, Task, Setting, MyRoutes, HomeLayout, SideBar };
+import { Footer } from "./component/Footer";
+import { NotFound } from "./pages/NotFound";
+export {
+  Signup,
+  Login,
+  Timer,
+  Task,
+  Setting,
+  MyRoutes,
+  HomeLayout,
+  SideBar,
+  Footer,
+  NotFound,
+};
