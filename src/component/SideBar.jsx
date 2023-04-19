@@ -4,7 +4,9 @@ import { BiStopwatch } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 import { MdAddTask } from "react-icons/md";
+import { useAuth } from "../context/AuthContext";
 const SideBar = () => {
+  const { isLoggedIn, logoutUser, user } = useAuth();
   return (
     <div className="grid gap-5 mt-9 ">
       <Link to="/">
@@ -39,12 +41,26 @@ const SideBar = () => {
             </Link>
           </li>
           <li className="hover:bg-cyan-200 hover:text-white py-4 px-2 hover:rounded-md focus:text-cyan-400">
-            <Link className="flex items-center gap-4" to="login">
-              <span className="text-4xl">
-                <RxAvatar />
-              </span>
-              <span>Login</span>
-            </Link>
+            {isLoggedIn ? (
+              <Link
+                className="flex items-center gap-4"
+                onClick={() => {
+                  logoutUser();
+                }}
+              >
+                <span className="text-4xl">
+                  <RxAvatar />
+                </span>
+                <span>{user?.email} Logout</span>
+              </Link>
+            ) : (
+              <Link className="flex items-center gap-4" to="login">
+                <span className="text-4xl">
+                  <RxAvatar />
+                </span>
+                <span>Login</span>
+              </Link>
+            )}
           </li>
         </ul>
       </nav>

@@ -8,6 +8,8 @@ import { HomeLayout } from "./Layout/HomeLayout";
 import { SideBar } from "./component/SideBar";
 import { Footer } from "./component/Footer";
 import { NotFound } from "./pages/NotFound";
+import { AuthProvider } from "./context/AuthContext";
+import { RequireAuth } from "./MyRoutes/RequireAuth";
 export {
   Signup,
   Login,
@@ -19,4 +21,6 @@ export {
   SideBar,
   Footer,
   NotFound,
+  AuthProvider,
+  RequireAuth,
 };

@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 const Signup = () => {
+  const [userRegister, setUserRegister] = useState({
+    email: "",
+    password: "",
+  });
+  const { registerUser, error } = useAuth();
+
+  const { email, password } = userRegister;
+  const handleRegisterUser = () => {
+    registerUser({ email, password });
+  };
+  const handleChange = (event) => {
+    setUserRegister({
+      ...userRegister,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <div>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -13,41 +30,26 @@ const Signup = () => {
               Sign up to your account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          {error && <div className="bg-red-400 px-4 py-4">{error}</div>}
+
+          <form
+            className="mt-8 space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={(event) => {
+              event.preventDefault();
+              handleRegisterUser({ email, password });
+            }}
+          >
             <input type="hidden" name="remember" value="true" />
 
             <div className="rounded-md shadow-sm -space-y-px">
-              <div>
-                <label htmlFor="FirstName" className="sr-only">
-                  FirstName
-                </label>
-                <input
-                  id="FirstName"
-                  name="FirstName"
-                  type="text"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
-                  placeholder="FirstName"
-                />
-              </div>
-              <div>
-                <label htmlFor="LastName" className="sr-only">
-                  LastName
-                </label>
-                <input
-                  id="LastName"
-                  name="LastName"
-                  type="text"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
-                  placeholder="LastName"
-                />
-              </div>
               <div>
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
                 <input
+                  onChange={(event) => handleChange(event)}
                   id="email-address"
                   name="email"
                   type="email"
@@ -61,6 +63,7 @@ const Signup = () => {
                   Password
                 </label>
                 <input
+                  onChange={(event) => handleChange(event)}
                   id="password"
                   name="password"
                   type="password"

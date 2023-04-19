@@ -5,6 +5,7 @@ import {
   HomeLayout,
   Login,
   NotFound,
+  RequireAuth,
   Setting,
   Signup,
   Task,
@@ -16,10 +17,38 @@ const MyRoutes = () => {
     <>
       <Routes>
         <Route element={<HomeLayout />}>
-          <Route index element={<Timer />} />
-          <Route path="task" element={<Task />} />
-          <Route path="setting" element={<Setting />} />
-          <Route path="footer" element={<Footer />} />
+          <Route
+            index
+            element={
+              <RequireAuth>
+                <Timer />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="task"
+            element={
+              <RequireAuth>
+                <Task />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/setting"
+            element={
+              <RequireAuth>
+                <Setting />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="footer"
+            element={
+              <RequireAuth>
+                <Footer />
+              </RequireAuth>
+            }
+          />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

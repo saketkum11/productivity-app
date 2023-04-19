@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
 const Login = () => {
+  const [userLogin, setUserLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const { loginUser, error } = useAuth();
+  const { email, password } = userLogin;
+  const handleChange = (event) => {
+    setUserLogin({ ...userLogin, [event.target.name]: event.target.value });
+  };
+  const handleLogin = ({ email, password }) => {
+    loginUser({ email, password });
+  };
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -12,7 +26,17 @@ const Login = () => {
             Sign in to your account
           </h2>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        {error && <div className="bg-red-400 px-4 py-4">{error}</div>}
+
+        <form
+          className="mt-8 space-y-6"
+          action="#"
+          method="POST"
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleLogin({ email, password });
+          }}
+        >
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -20,6 +44,7 @@ const Login = () => {
                 Email address
               </label>
               <input
+                onChange={(event) => handleChange(event)}
                 id="email-address"
                 name="email"
                 type="email"
@@ -33,6 +58,7 @@ const Login = () => {
                 Password
               </label>
               <input
+                onChange={(event) => handleChange(event)}
                 id="password"
                 name="password"
                 type="password"
