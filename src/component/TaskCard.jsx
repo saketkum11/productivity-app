@@ -2,7 +2,7 @@ import React from "react";
 import { MdEdit } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 const TaskCard = ({ task }) => {
-  const { title, description, workDuration, lable } = task;
+  const { title } = task;
   return (
     <section className=" p-5 border-b-2 border-b-cyan-400 border-solid my-5">
       <div className="flex justify-between items-center">

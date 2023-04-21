@@ -15,6 +15,7 @@ import { db, firebaseApp, auth } from "./Firebase/firebase";
 import { addDate } from "./Firebase/db-store";
 import { reducer } from "./Firebase/reducer";
 import { TaskCard } from "./component/TaskCard";
+import { addTask } from "./Firebase/db-store";
 export {
   Signup,
   Login,
@@ -32,7 +33,7 @@ export {
   db,
   auth,
   firebaseApp,
-  addDate,
   reducer,
   TaskCard,
+  addTask,
 };

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { addDate, auth, db, firebaseApp } from "../server";
+import { useAuth } from "../context/AuthContext";
+import { addTask } from "../server";
 
 const Setting = () => {
   const [taskData, setTaskData] = useState({
     taskTitle: "" || "Get start",
-    workDuration: 15,
+    workDuration: "15",
     description: "" || "Get this done by today or max to sunday.",
     lable: "Game-time",
   });
+  const { user } = useAuth();
+  const { uid } = user;
 
   const { taskTitle, workDuration, lable, description } = taskData;
 
@@ -15,18 +18,19 @@ const Setting = () => {
     setTaskData({ ...taskData, [event.target.name]: event.target.value });
   };
 
-  const handleNewData = () => {
-    console.log(addDate());
+  const handleNewData = (uid, data) => {
+    addTask(uid, data);
   };
   return (
     <div className="flex flex-col justify-center items-center gap-5 my-16 min-h-full">
       <form
         onSubmit={(event) => {
           event.preventDefault();
+          handleNewData(uid, taskData);
         }}
       >
         <div className="flex flex-col w-full gap-4 max-w-md">
-          <h5>Timer Title</h5>
+          <label htmlFor="taskTitle">Title</label>
           <input
             onChange={(event) => handleChange(event)}
             type="text"
@@ -34,7 +38,6 @@ const Setting = () => {
             name="taskTitle"
             value={taskTitle}
           ></input>
-          {taskTitle}
         </div>
         <div className="max-w-5xl flex flex-col p-5 gap-4">
           <label htmlFor="description">Description</label>
@@ -83,10 +86,9 @@ const Setting = () => {
           type="submit"
           className="bg-cyan-500 text-white p-3 w-full mt-6 rounded-md"
         >
-          Submit
+          Create Task
         </button>
       </form>
-      <button onClick={handleNewData}>get data base</button>
     </div>
   );
 };
