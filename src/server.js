@@ -10,6 +10,7 @@ import { Footer } from "./component/Footer";
 import { NotFound } from "./pages/NotFound";
 import { AuthProvider } from "./context/AuthContext";
 import { RequireAuth } from "./MyRoutes/RequireAuth";
+import { TaskProvider } from "./context/TaskContext";
 export {
   Signup,
   Login,
@@ -23,4 +24,5 @@ export {
   NotFound,
   AuthProvider,
   RequireAuth,
+  TaskProvider,
 };

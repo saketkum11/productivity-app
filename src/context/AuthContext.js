@@ -68,7 +68,6 @@ const AuthProvider = ({ children }) => {
     user,
     token,
   };
-  console.log(navigate, location);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
