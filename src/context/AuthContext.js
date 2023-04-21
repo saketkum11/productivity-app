@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [user, setUser] = useState("");
-  const token = user?.accessToken;
+  const token = user?.uid;
   const isLoggedIn = token ? true : false;
   const [error, setError] = useState("");
 
@@ -68,6 +68,7 @@ const AuthProvider = ({ children }) => {
     user,
     token,
   };
+  console.log("user", user);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 

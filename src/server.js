@@ -11,6 +11,10 @@ import { NotFound } from "./pages/NotFound";
 import { AuthProvider } from "./context/AuthContext";
 import { RequireAuth } from "./MyRoutes/RequireAuth";
 import { TaskProvider } from "./context/TaskContext";
+import { db, firebaseApp, auth } from "./Firebase/firebase";
+import { addDate } from "./Firebase/db-store";
+import { reducer } from "./Firebase/reducer";
+import { TaskCard } from "./component/TaskCard";
 export {
   Signup,
   Login,
@@ -25,4 +29,10 @@ export {
   AuthProvider,
   RequireAuth,
   TaskProvider,
+  db,
+  auth,
+  firebaseApp,
+  addDate,
+  reducer,
+  TaskCard,
 };

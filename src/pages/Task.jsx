@@ -1,47 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTask } from "../context/TaskContext";
-import { MdEdit } from "react-icons/md";
-import { AiFillDelete } from "react-icons/ai";
+import { collection, onSnapshot } from "firebase/firestore";
+import { TaskCard, db } from "../server";
+import { useAuth } from "../context/AuthContext";
+
 const Task = () => {
+  const { user } = useAuth();
   const { state, dispatch } = useTask();
-  const { task } = state;
-  const handleDelete = (item) => {
-    dispatch({ type: "DELETE_TASK", payload: item });
-  };
+  const { tasks } = state;
+
+  useEffect(() => {
+    let unsub = null;
+    const id = user?.uid;
+    if (id) {
+      const col = collection(db, "pomodoro", id, "task");
+      unsub = onSnapshot(col, (colSearch) => {
+        let list = [];
+        colSearch?.docs?.forEach((doc) => {
+          const _task = {
+            id: doc?.id,
+            ...doc.data(),
+          };
+          list.push(_task);
+        });
+        dispatch({ type: "ADD_TASK", payload: list });
+      });
+    }
+    return () => {
+      unsub && unsub();
+    };
+  }, [user]);
+
   return (
     <>
-      <div className=" min-h-full">
-        <h3 className="text-3xl font-bold">Task list</h3>
-        <div className="flex justify-center items-center gap-5 p-5">
-          {[...task]?.map((item) => {
-            const { taskTitle, workDuration, lable } = item;
-            return (
-              <>
-                <section className="border-2 border-cyan-800 border-solid my-3 p-4 rounded-md">
-                  <div className="flex flex-col justify-center  gap-2 flex-wrap">
-                    <div className="text-xl font-bold"> {taskTitle}</div>
-                    <div>WordDuration: {workDuration} min</div>
-                    <div>Lable: {lable}</div>
-                  </div>
-                  <div className="flex gap-4 mt-5">
-                    <button
-                      className="cursor-pointer hover:text-slate-500"
-                      onClick={() => {}}
-                    >
-                      <MdEdit />
-                    </button>
-                    <button
-                      className="cursor-pointer hover:text-slate-500"
-                      onClick={(item) => handleDelete(item)}
-                    >
-                      <AiFillDelete />
-                    </button>
-                  </div>
-                </section>
-              </>
-            );
-          })}
-        </div>
+      <div>
+        {[...tasks]?.map((task) => {
+          return (
+            <>
+              <TaskCard task={task} key={task.id} />
+            </>
+          );
+        })}
       </div>
     </>
   );

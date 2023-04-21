@@ -1,32 +1,28 @@
 import React, { useState } from "react";
-import { useTask } from "../context/TaskContext";
+import { addDate, auth, db, firebaseApp } from "../server";
 
 const Setting = () => {
   const [taskData, setTaskData] = useState({
     taskTitle: "" || "Get start",
     workDuration: 15,
+    description: "" || "Get this done by today or max to sunday.",
     lable: "Game-time",
   });
-  const { dispatch } = useTask();
 
-  const { taskTitle, workDuration, lable } = taskData;
+  const { taskTitle, workDuration, lable, description } = taskData;
 
   const handleChange = (event) => {
     setTaskData({ ...taskData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = () => {
-    dispatch({
-      type: "CREATE_TASK",
-      payload: taskData,
-    });
+  const handleNewData = () => {
+    console.log(addDate());
   };
   return (
     <div className="flex flex-col justify-center items-center gap-5 my-16 min-h-full">
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          handleSubmit();
         }}
       >
         <div className="flex flex-col w-full gap-4 max-w-md">
@@ -39,6 +35,18 @@ const Setting = () => {
             value={taskTitle}
           ></input>
           {taskTitle}
+        </div>
+        <div className="max-w-5xl flex flex-col p-5 gap-4">
+          <label htmlFor="description">Description</label>
+          <textarea
+            onChange={(event) => handleChange(event)}
+            value={description}
+            name="description"
+            cols="30"
+            rows="5"
+            required
+            className="border-2 border-black border-solid p-4"
+          />
         </div>
         <div className="max-w-5xl flex flex-col p-5 gap-4">
           <label htmlFor="Work-duration">Work-duration</label>
@@ -78,6 +86,7 @@ const Setting = () => {
           Submit
         </button>
       </form>
+      <button onClick={handleNewData}>get data base</button>
     </div>
   );
 };

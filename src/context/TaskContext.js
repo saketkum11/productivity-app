@@ -1,29 +1,16 @@
 import React, { createContext, useContext, useReducer } from "react";
+
+import { reducer } from "../server";
+
 const TaskContext = createContext();
 const TaskProvider = ({ children }) => {
-  const initialState = {
-    task: [],
+  const intitialState = {
+    tasks: [],
   };
-  function reducer(state, { type, payload }) {
-    switch (type) {
-      case "CREATE_TASK":
-        return {
-          ...state,
-          task: [...state.task, payload],
-        };
-      case "DELETE_TASK":
-        return {
-          ...state,
-          task: [],
-        };
 
-      default:
-        return { state };
-    }
-  }
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
+  const [state, dispatch] = useReducer(reducer, intitialState);
   console.log(state);
+  const value = { state, dispatch };
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
 };
 
