@@ -3,7 +3,7 @@ import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className=" flex justify-between items-center bg-slate-500 py-5 text-white px-2">
+    <footer className=" flex justify-between items-center bg-slate-500 py-5 text-white px-2" >
       <span>made by Saket Kumar</span>
       <ul className="flex gap-4 text-2xl">
         <li>

@@ -16,7 +16,13 @@ import { addDate } from "./Firebase/db-store";
 import { reducer } from "./Firebase/reducer";
 import { TaskCard } from "./component/TaskCard";
 import { addTask } from "./Firebase/db-store";
+import { EditModal } from "./component/EditModal";
+import { updateTask } from "./Firebase/db-store";
+import { deleteTask } from "./Firebase/db-store";
 export {
+  deleteTask,
+  updateTask,
+  EditModal,
   Signup,
   Login,
   Timer,

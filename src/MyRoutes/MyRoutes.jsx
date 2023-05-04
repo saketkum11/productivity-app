@@ -16,7 +16,7 @@ const MyRoutes = () => {
   return (
     <>
       <Routes>
-        <Route element={<HomeLayout />}>
+        <Route path="/" element={<HomeLayout />}>
           <Route
             index
             element={
@@ -34,7 +34,7 @@ const MyRoutes = () => {
             }
           />
           <Route
-            path="/setting"
+            path="setting"
             element={
               <RequireAuth>
                 <Setting />
