@@ -1,12 +1,22 @@
 import React from "react";
 import { GrPlayFill } from "react-icons/gr";
 import { BiReset } from "react-icons/bi";
+import { useParams } from "react-router-dom";
+import { useTask } from "../context/TaskContext";
+
 const Timer = () => {
+  const { taskID } = useParams();
+  const { state } = useTask();
+  const { tasks } = state;
+  const task = [...tasks].find((taskItem) => taskItem.id === taskID);
+  const { description, lable, taskTitle, workDuration } = task;
   return (
     <section className="grid justify-center items-center">
       <section className="p-4 flex flex-col items-center my-10 justify-center ">
-        <div className="my-5 ">
-          <button>Label</button>
+        <div className="  flex w-full justify-center flex-wrap items-center ">
+          <span className=" p-3 bg-gray-900 text-white rounded-2xl my-3">
+            {lable}
+          </span>
         </div>
         <div className="h-96 w-96  rounded-full border-8 flex flex-col justify-center border-cyan-600 ">
           <div className="flex justify-center items-center  text-7xl ">
@@ -28,21 +38,8 @@ const Timer = () => {
         </div>
       </section>
       <section className="flex justify-start items-start border-4 flex-col  p-7 my-10 max-w-lg">
-        <span className="text-2xl font-bold ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ab
-          eligendi consequuntur molestiae, eius dolore quibusdam aliquid
-          perferendis commodi laborum!
-        </span>
-        <p className="text-justify my-5">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Voluptatibus, ad!
-        </p>
-        <span className="text-lg font-bold">Tag:</span>
-        <div className="  flex w-full justify-start flex-wrap items-center ">
-          <span className=" p-3 bg-gray-900 text-white rounded-2xl my-3">
-            My name is khan and i am not terrorits"
-          </span>
-        </div>
+        <span className="text-2xl font-bold ">{taskTitle}</span>
+        <p className="text-justify my-5">{description}</p>
       </section>
     </section>
   );

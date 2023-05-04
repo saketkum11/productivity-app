@@ -18,7 +18,15 @@ const MyRoutes = () => {
       <Routes>
         <Route path="/" element={<HomeLayout />}>
           <Route
-            index
+            path="/pomodoro"
+            element={
+              <RequireAuth>
+                <Timer />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/pomodoro/:taskID"
             element={
               <RequireAuth>
                 <Timer />
