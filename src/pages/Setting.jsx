@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 const Setting = () => {
   const [taskData, setTaskData] = useState({
     taskTitle: "",
-    workDuration: "",
+    workDuration: 0,
     description: "",
-    lable: "",
+    lable: "" || "Game",
   });
   const { user } = useAuth();
   const { uid } = user;
@@ -57,6 +57,7 @@ const Setting = () => {
             value={taskTitle}
             required
           ></input>
+          <div></div>
         </div>
         <div className="max-w-5xl flex flex-col p-5 gap-4">
           <label htmlFor="description">Description</label>
@@ -85,24 +86,6 @@ const Setting = () => {
           {workDuration ?? 0} min
         </div>
 
-        <div className="flex gap-4">
-          <lable htmlFor="break">Choose Lable :</lable>
-          <select
-            onChange={(event) => handleChange(event)}
-            value={lable}
-            name="lable"
-            id="break"
-            required
-            className="border-solid border-cyan-600 border-2"
-          >
-            <option value="Study-hour">Study hour</option>
-            <option value="Break-time">Break Time</option>
-            <option value="Game-time">Game Time</option>
-            <option value="Book-reading">Book reading</option>
-            <option value="Watching-ipl">Watching Ipl time</option>
-          </select>
-          {lable}
-        </div>
         <button
           type="submit"
           className="bg-cyan-500 text-white p-3 w-full mt-6 rounded-md"
@@ -110,6 +93,25 @@ const Setting = () => {
           Create Task
         </button>
       </form>
+      <div className="flex gap-4">
+        <lable htmlFor="break">Choose Lable :</lable>
+        <select
+          onChange={(event) => handleChange(event)}
+          value={lable}
+          name="lable"
+          id="break"
+          required
+          className="border-solid border-cyan-600 border-2"
+        >
+          <option> --Select Option--</option>
+          <option value="Study-hour">Study hour</option>
+          <option value="Break-time">Break Time</option>
+          <option value="Game-time">Game Time</option>
+          <option value="Book-reading">Book reading</option>
+          <option value="Watching-ipl">Watching Ipl time</option>
+        </select>
+        {lable}
+      </div>
     </div>
   );
 };

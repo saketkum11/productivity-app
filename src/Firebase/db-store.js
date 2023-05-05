@@ -33,3 +33,11 @@ export const deleteTask = async (uid, id) => {
     console.error(error);
   }
 };
+export const formatingTime = (remaingTime) => {
+  const minute = Math.floor(remaingTime / 60);
+  const sec = remaingTime % 60;
+  const time = `${minute < 10 ? "0" + minute : minute} m : ${
+    sec < 10 ? "0" + sec : sec
+  } s`;
+  return time;
+};
