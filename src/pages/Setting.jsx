@@ -10,6 +10,7 @@ const Setting = () => {
     workDuration: 0,
     description: "",
     lable: "" || "Game",
+    completed: false,
   });
   const { user } = useAuth();
   const { uid } = user;

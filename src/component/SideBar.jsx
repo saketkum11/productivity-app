@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BiStopwatch } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 import { MdAddTask } from "react-icons/md";
@@ -43,7 +42,7 @@ const SideBar = () => {
                 <span className="text-4xl">
                   <RxAvatar />
                 </span>
-                <span>{user?.email} Logout</span>
+                <span> Logout</span>
               </Link>
             ) : (
               <Link className="flex items-center gap-4" to="login">
