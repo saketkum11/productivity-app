@@ -28,12 +28,20 @@ const TaskCard = ({ task }) => {
       theme: "light",
     });
   };
+  const handleUnderLine = (event) => {
+    console.log(event);
+  };
 
   return (
-    <section className=" p-5 border-b-2 border-b-cyan-400 border-solid my-5">
+    <section className=" p-5 mx-auto w-4/5 border-b-2 border-b-cyan-400 border-solid my-5 ">
       <div className="flex justify-between items-center">
         <div className="flex gap-2">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={(event) => {
+              handleUnderLine(event);
+            }}
+          />
           <Link
             to={`/pomodoro/${task.id}`}
             className="text-md font-bold hover:text-cyan-400 focus:text-cyan-600 cursor-pointer"

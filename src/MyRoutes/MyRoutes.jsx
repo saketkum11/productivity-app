@@ -16,7 +16,7 @@ const MyRoutes = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomeLayout />}>
+        <Route element={<HomeLayout />}>
           <Route
             path="/pomodoro"
             element={
@@ -58,8 +58,8 @@ const MyRoutes = () => {
             }
           />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

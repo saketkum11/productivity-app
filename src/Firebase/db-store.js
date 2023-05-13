@@ -6,6 +6,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../server";
+import { useEffect, useState } from "react";
 
 export const addTask = async (uid, data) => {
   try {
@@ -40,4 +41,11 @@ export const formatingTime = (remaingTime) => {
     sec < 10 ? "0" + sec : sec
   } s`;
   return time;
+};
+export const useTitle = (doc_title) => {
+  const [_title, setTitle] = useState(doc_title);
+  useEffect(() => {
+    document.title = _title;
+  }, [_title]);
+  return { setTitle };
 };

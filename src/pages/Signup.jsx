@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTitle } from "../server";
 const Signup = () => {
   const [userRegister, setUserRegister] = useState({
     email: "",
@@ -9,6 +10,7 @@ const Signup = () => {
   const { registerUser, error } = useAuth();
 
   const { email, password } = userRegister;
+  useTitle("SignUp");
   const handleRegisterUser = () => {
     registerUser({ email, password });
   };

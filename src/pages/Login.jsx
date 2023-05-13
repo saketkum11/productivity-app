@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTitle } from "../server";
 
 const Login = () => {
   const [userLogin, setUserLogin] = useState({
@@ -9,6 +10,7 @@ const Login = () => {
   });
   const { loginUser, error } = useAuth();
   const { email, password } = userLogin;
+  useTitle("Login");
   const handleChange = (event) => {
     setUserLogin({ ...userLogin, [event.target.name]: event.target.value });
   };
@@ -19,7 +21,7 @@ const Login = () => {
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="underline underline-offset-1">
-          <Link to="/">Back to Home</Link>
+          <Link to="/task">Back to Home</Link>
         </div>
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">

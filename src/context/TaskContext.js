@@ -9,7 +9,6 @@ const TaskProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(reducer, intitialState);
-  console.log(state);
   const value = { state, dispatch };
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
 };

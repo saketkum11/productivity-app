@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { addTask } from "../server";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useTitle } from "../server";
 const Setting = () => {
   const [taskData, setTaskData] = useState({
     taskTitle: "",
@@ -18,7 +19,7 @@ const Setting = () => {
   const handleChange = (event) => {
     setTaskData({ ...taskData, [event.target.name]: event.target.value });
   };
-
+  useTitle("Setting");
   const handleNewData = (uid, data) => {
     addTask(uid, data);
     toast.success("created task", {

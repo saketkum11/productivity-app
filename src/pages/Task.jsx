@@ -3,12 +3,13 @@ import { useTask } from "../context/TaskContext";
 import { collection, onSnapshot } from "firebase/firestore";
 import { TaskCard, db } from "../server";
 import { useAuth } from "../context/AuthContext";
-
+import { useTitle } from "../server";
+import { useState } from "react";
 const Task = () => {
   const { user } = useAuth();
   const { state, dispatch } = useTask();
   const { tasks } = state;
-
+  useTitle("tasks");
   useEffect(() => {
     let unsub = null;
     const id = user?.uid;
@@ -33,14 +34,20 @@ const Task = () => {
 
   return (
     <>
-      <div>
-        {[...tasks]?.map((task) => {
-          return (
-            <>
-              <TaskCard task={task} key={task.id} />
-            </>
-          );
-        })}
+      <div className="min-h-screen">
+        {tasks.length !== 0 ? (
+          [...tasks]?.map((task) => {
+            return (
+              <>
+                <TaskCard task={task} key={task.id} />
+              </>
+            );
+          })
+        ) : (
+          <div className="m-auto flex justify-center my-4">
+            <span> Does not have any tasks create {tasks.length}</span>
+          </div>
+        )}
       </div>
     </>
   );

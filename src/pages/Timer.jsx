@@ -4,7 +4,7 @@ import { BiReset } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import { useTask } from "../context/TaskContext";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { formatingTime } from "../server";
+import { formatingTime, useTitle } from "../server";
 import { AiOutlinePause } from "react-icons/ai";
 const Timer = () => {
   const { taskID } = useParams();
@@ -12,9 +12,10 @@ const Timer = () => {
   const { tasks } = state;
   const task = [...tasks].find((taskItem) => taskItem.id === taskID);
   const { description, lable, taskTitle, workDuration } = task;
-  const [change, setChange] = useState({ key: 0, playing: false });
+  const [change, setChange] = useState({ key: 0, playing: false, time: "" });
+  useTitle(`pomodoro | ${taskTitle}`);
   return (
-    <section className="grid grid-cols-6 justify-center place-content-center">
+    <section className="grid grid-cols-6 justify-center place-content-center my-24">
       <div className="col-span-3 flex flex-col justify-center items-center">
         <CountdownCircleTimer
           isPlaying={change.playing}
@@ -24,7 +25,9 @@ const Timer = () => {
           colorsTime={8}
           size={300}
           strokeWidth={40}
-          onUpdate={() => {}}
+          onComplete={(remainingTime) => {
+            setChange({ ...change, time: remainingTime });
+          }}
         >
           {({ remainingTime }) => (
             <div className="flex flex-col items-center justify-center ">
@@ -85,7 +88,7 @@ const Timer = () => {
         </div>
       </div>
 
-      <div className=" col-span-3 flex justify-start items-start border-4 flex-col  p-7 my-10 max-w-lg">
+      <div className=" col-span-3 flex justify-start items-start border-2 flex-col  p-7 my-10 max-w-lg">
         <span className="text-2xl font-bold ">{taskTitle}</span>
         <p className="text-justify my-5">{description}</p>
       </div>

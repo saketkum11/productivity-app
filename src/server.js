@@ -20,7 +20,9 @@ import { EditModal } from "./component/EditModal";
 import { updateTask } from "./Firebase/db-store";
 import { deleteTask } from "./Firebase/db-store";
 import { formatingTime } from "./Firebase/db-store";
+import { useTitle } from "./Firebase/db-store";
 export {
+  useTitle,
   formatingTime,
   deleteTask,
   updateTask,

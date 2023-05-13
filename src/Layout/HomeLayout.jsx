@@ -6,11 +6,13 @@ const HomeLayout = () => {
   return (
     <>
       <div className="grid grid-cols-6">
-        <aside className="col-span-1 p-5 pl-9 border-r-2 border-solid border-black min-h-full">
+        <aside className="col-span-1 p-5 pl-9  border-solid border-black ">
           <SideBar />
         </aside>
-        <main className="col-span-5  p-5">
-          <Outlet />
+        <main className=" col-span-5 min-h-screen border-x p-5">
+          <div>
+            <Outlet />
+          </div>
           <Footer />
         </main>
       </div>

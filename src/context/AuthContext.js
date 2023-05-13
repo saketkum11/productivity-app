@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
         password
       );
       setUser(response.user);
-      navigate(location.state);
+      navigate("task");
     } catch (error) {
       console.error(error.message);
       setError(error.message);
@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
       setUser(response.user);
-      navigate("/");
+      navigate("task");
     } catch (error) {
       console.error(error);
       setError(error.message);
