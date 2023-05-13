@@ -42,7 +42,7 @@ const Setting = () => {
     navigate("/task");
   };
   return (
-    <div className="flex flex-col justify-center items-center gap-5 my-16 min-h-full">
+    <div className="flex flex-col justify-center items-center gap-5 my-16 ">
       <form
         onSubmit={(event) => {
           event.preventDefault();

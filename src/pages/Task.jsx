@@ -4,7 +4,6 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { TaskCard, db } from "../server";
 import { useAuth } from "../context/AuthContext";
 import { useTitle } from "../server";
-import { useState } from "react";
 const Task = () => {
   const { user } = useAuth();
   const { state, dispatch } = useTask();

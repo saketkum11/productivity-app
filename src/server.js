@@ -12,7 +12,6 @@ import { AuthProvider } from "./context/AuthContext";
 import { RequireAuth } from "./MyRoutes/RequireAuth";
 import { TaskProvider } from "./context/TaskContext";
 import { db, firebaseApp, auth } from "./Firebase/firebase";
-import { addDate } from "./Firebase/db-store";
 import { reducer } from "./Firebase/reducer";
 import { TaskCard } from "./component/TaskCard";
 import { addTask } from "./Firebase/db-store";
@@ -21,7 +20,9 @@ import { updateTask } from "./Firebase/db-store";
 import { deleteTask } from "./Firebase/db-store";
 import { formatingTime } from "./Firebase/db-store";
 import { useTitle } from "./Firebase/db-store";
+import { Nav } from "./component/Nav";
 export {
+  Nav,
   useTitle,
   formatingTime,
   deleteTask,

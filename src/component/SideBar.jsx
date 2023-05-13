@@ -5,7 +5,7 @@ import { RxAvatar } from "react-icons/rx";
 import { MdAddTask } from "react-icons/md";
 import { useAuth } from "../context/AuthContext";
 const SideBar = () => {
-  const { isLoggedIn, logoutUser, user } = useAuth();
+  const { isLoggedIn, logoutUser } = useAuth();
   return (
     <div className="flex flex-col  gap-5 mt-9 ">
       <Link to="task">

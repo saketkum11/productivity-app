@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const TaskCard = ({ task }) => {
   const [editModalFlag, setEditModalFlag] = useState(false);
-  const { taskTitle, id, completed } = task;
+  const { taskTitle, completed } = task;
   const { user } = useAuth();
 
   const handleEditForm = () => {
