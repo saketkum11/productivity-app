@@ -12,7 +12,8 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
-  const token = user?.uid;
+  const storeLoginUser = JSON.parse(localStorage.getItem("userLogin"));
+  const token = storeLoginUser?.uid;
   const isLoggedIn = token ? true : false;
   const [error, setError] = useState("");
 
@@ -29,7 +30,7 @@ const AuthProvider = ({ children }) => {
         email,
         password
       );
-      setUser(response.user);
+      localStorage.setItem("userLogin", JSON.stringify(response.user));
       navigate("/");
     } catch (error) {
       console.error(error.message);
@@ -40,7 +41,7 @@ const AuthProvider = ({ children }) => {
   const loginUser = async ({ email, password }) => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
-      setUser(response.user);
+      localStorage.setItem("userLogin", JSON.stringify(response.user));
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -51,7 +52,8 @@ const AuthProvider = ({ children }) => {
   const logoutUser = async () => {
     try {
       const response = await signOut(auth);
-      setUser(response);
+      localStorage.clear("userLogin");
+      navigate("/login");
     } catch (error) {
       console.error(error);
       setError(error.message);
