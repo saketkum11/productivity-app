@@ -68,6 +68,7 @@ const AuthProvider = ({ children }) => {
     error,
     user,
     token,
+    storeLoginUser,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

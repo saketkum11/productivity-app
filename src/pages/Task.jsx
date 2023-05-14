@@ -5,13 +5,13 @@ import { TaskCard, db } from "../server";
 import { useAuth } from "../context/AuthContext";
 import { useTitle } from "../server";
 const Task = () => {
-  const { user } = useAuth();
+  const { storeLoginUser } = useAuth();
   const { state, dispatch } = useTask();
   const { tasks } = state;
   useTitle("tasks");
   useEffect(() => {
     let unsub = null;
-    const id = user?.uid;
+    const id = storeLoginUser?.uid;
     if (id) {
       const col = collection(db, "pomodoro", id, "task");
       unsub = onSnapshot(col, (colSearch) => {
@@ -29,7 +29,7 @@ const Task = () => {
     return () => {
       unsub && unsub();
     };
-  }, []);
+  }, [storeLoginUser]);
 
   return (
     <>
