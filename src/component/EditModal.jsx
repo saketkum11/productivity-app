@@ -5,7 +5,7 @@ import { updateTask } from "../server";
 const EditModal = ({ task, setEditModalFlag }) => {
   const { user } = useAuth();
   const [editTask, setEditTask] = useState(task);
-  const { taskTitle, lable, description, workDuration, id } = editTask;
+  const { taskTitle, lable, description, workDuration } = editTask;
   const { uid } = user;
   const handleChange = (event) => {
     setEditTask({ ...editTask, [event.target.name]: event.target.value });
