@@ -29,7 +29,7 @@ const Task = () => {
     return () => {
       unsub && unsub();
     };
-  }, [user]);
+  }, []);
 
   return (
     <>
