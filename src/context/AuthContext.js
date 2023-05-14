@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
 
   const logoutUser = async () => {
     try {
-      const response = await signOut(auth);
+      await signOut(auth);
       localStorage.clear("userLogin");
       navigate("/login");
     } catch (error) {
