@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NotFound = () => {
   return (
     <div>
-      <Link to="task">Back to home</Link>
+      <Link to="/">Back to home</Link>
       <div>NotFound</div>
     </div>
   );

@@ -38,30 +38,30 @@ const Setting = () => {
       workDuration: "",
       lable: "",
       description: "",
+      completed: false,
     });
-    navigate("/task");
+    navigate("/");
   };
   return (
-    <div className="flex flex-col justify-center items-center gap-5 my-16 ">
+    <div className="flex flex-col justify-center w-full max-w-lg gap-5 my-16 m-auto border-solid border-cyan-400 border-2 rounded-md p-9 text-lg md:text-sm">
       <form
         onSubmit={(event) => {
           event.preventDefault();
           handleNewData(uid, taskData);
         }}
       >
-        <div className="flex flex-col w-full gap-4 max-w-md">
+        <div className="flex flex-col gap-4 ">
           <label htmlFor="taskTitle">Title</label>
           <input
             onChange={(event) => handleChange(event)}
             type="text"
-            className="border-2 p-4 rounded-md"
             name="taskTitle"
             value={taskTitle}
             required
+            className="border-2 p-4 rounded-md w-full"
           ></input>
-          <div></div>
         </div>
-        <div className="max-w-5xl flex flex-col p-5 gap-4">
+        <div className=" flex flex-col p-5 gap-4">
           <label htmlFor="description">Description</label>
           <textarea
             onChange={(event) => handleChange(event)}
@@ -73,7 +73,7 @@ const Setting = () => {
             className="border-2 border-black border-solid p-4"
           />
         </div>
-        <div className="max-w-5xl flex flex-col p-5 gap-4">
+        <div className=" flex flex-col p-5 gap-4">
           <label htmlFor="Work-duration">Work-duration</label>
           <input
             onChange={(event) => handleChange(event)}
@@ -83,19 +83,19 @@ const Setting = () => {
             min="0"
             max="60"
             required
-            className="h-0.5 appearance-none bg-cyan-600 w-80 rounded-full"
+            className="h-0.5 appearance-none bg-cyan-600  rounded-full"
           />
           {workDuration ?? 0} min
         </div>
 
         <button
           type="submit"
-          className="bg-cyan-500 text-white p-3 w-full mt-6 rounded-md"
+          className="bg-cyan-500 text-white p-3 w-full  mt-6 rounded-md"
         >
           Create Task
         </button>
       </form>
-      <div className="flex gap-4">
+      <div className="sm:flex gap-4  block text-center">
         <lable htmlFor="break">Choose Lable :</lable>
         <select
           onChange={(event) => handleChange(event)}
@@ -112,7 +112,6 @@ const Setting = () => {
           <option value="Book-reading">Book reading</option>
           <option value="Watching-ipl">Watching Ipl time</option>
         </select>
-        {lable}
       </div>
     </div>
   );

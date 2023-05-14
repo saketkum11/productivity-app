@@ -15,7 +15,7 @@ const Timer = () => {
   const [change, setChange] = useState({ key: 0, playing: false, time: "" });
   useTitle(`pomodoro | ${taskTitle}`);
   return (
-    <section className="grid grid-cols-6 justify-center place-content-center my-24">
+    <section className=" items-center place-content-center my-14 lg:grid lg:grid-cols-6">
       <div className="col-span-3 flex flex-col justify-center items-center">
         <CountdownCircleTimer
           isPlaying={change.playing}
@@ -88,7 +88,7 @@ const Timer = () => {
         </div>
       </div>
 
-      <div className=" col-span-3 flex justify-start items-start border-2 flex-col  p-7 my-10 max-w-lg">
+      <div className="  flex justify-start items-start border-2 flex-col  p-4 my-14 lg:col-span-3">
         <span className="text-2xl font-bold ">{taskTitle}</span>
         <p className="text-justify my-5">{description}</p>
       </div>

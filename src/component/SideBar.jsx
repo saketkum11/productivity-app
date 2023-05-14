@@ -16,7 +16,7 @@ const SideBar = () => {
       <nav className="mt-8 text-md">
         <ul className="flex flex-col gap-9">
           <li className="hover:bg-cyan-200 hover:text-white py-4 px-2 hover:rounded-md focus:text-cyan-400">
-            <Link className="flex items-center gap-4" to="task">
+            <Link className="flex items-center gap-4" to="/">
               <span className="text-4xl">
                 <MdAddTask />
               </span>

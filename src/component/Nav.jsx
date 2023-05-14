@@ -14,10 +14,10 @@ const Nav = () => {
     setNavFlag((flag) => !flag);
   };
   return (
-    <div className="fixed bg-white p-6 md:hidden top-0 left-0 right-0 border-b-2">
+    <div className="fixed bg-white p-6 lg:hidden top-0 left-0 right-0 border-b-2 z-20">
       <nav>
         <div className="flex items-center justify-between ">
-          <Link to="task">
+          <Link to="/">
             <h2 className="text-4xl font-bold text-cyan-500 cursor-pointer">
               PomoDoro
             </h2>
@@ -42,7 +42,7 @@ const Nav = () => {
           {navFlag && (
             <ul className="flex flex-col gap-9 mt-14">
               <li className="hover:bg-cyan-200 hover:text-white py-4 px-2 hover:rounded-md focus:text-cyan-400">
-                <Link className="flex items-center gap-4" to="task">
+                <Link className="flex items-center gap-4" to="/">
                   <span className="text-4xl">
                     <MdAddTask />
                   </span>

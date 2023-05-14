@@ -6,11 +6,10 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const location = useLocation();
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const token = user?.uid;
@@ -31,7 +30,7 @@ const AuthProvider = ({ children }) => {
         password
       );
       setUser(response.user);
-      navigate("task");
+      navigate("/");
     } catch (error) {
       console.error(error.message);
       setError(error.message);
@@ -42,7 +41,7 @@ const AuthProvider = ({ children }) => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
       setUser(response.user);
-      navigate("task");
+      navigate("/");
     } catch (error) {
       console.error(error);
       setError(error.message);

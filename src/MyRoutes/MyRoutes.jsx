@@ -18,13 +18,14 @@ const MyRoutes = () => {
       <Routes>
         <Route element={<HomeLayout />}>
           <Route
-            path="/pomodoro"
+            index
             element={
               <RequireAuth>
-                <Timer />
+                <Task />
               </RequireAuth>
             }
           />
+
           <Route
             path="/pomodoro/:taskID"
             element={
@@ -33,14 +34,7 @@ const MyRoutes = () => {
               </RequireAuth>
             }
           />
-          <Route
-            path="task"
-            element={
-              <RequireAuth>
-                <Task />
-              </RequireAuth>
-            }
-          />
+
           <Route
             path="setting"
             element={

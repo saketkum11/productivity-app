@@ -5,12 +5,12 @@ import { Outlet } from "react-router-dom";
 const HomeLayout = () => {
   return (
     <>
-      <div className="block md:grid md:grid-cols-6">
+      <div className="block lg:grid lg:grid-cols-6">
         <Nav />
-        <aside className="hidden  p-5 pl-9  border-solid border-black  md:block md:col-span-1">
+        <aside className="hidden  p-5 pl-9  border-solid border-black  lg:block lg:col-span-1">
           <SideBar />
         </aside>
-        <main className=" mt-28 min-h-screen  p-5 md:border-x md:col-span-5">
+        <main className=" mt-28 min-h-screen  p-5 lg:border-x lg:col-span-5">
           <div>
             <Outlet />
           </div>
