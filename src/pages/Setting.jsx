@@ -22,25 +22,44 @@ const Setting = () => {
   };
   useTitle("Setting");
   const handleNewData = (uid, data) => {
-    addTask(uid, data);
-    toast.success("created task", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-    setTaskData({
-      taskTitle: "",
-      workDuration: "",
-      lable: "",
-      description: "",
-      completed: false,
-    });
-    navigate("/");
+    console.log(data);
+    if (
+      data.taskTitle !== " " ||
+      data.lable !== " " ||
+      data.description !== " " ||
+      data.workDuration !== 0
+    ) {
+      addTask(uid, data);
+      toast.success("created task", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setTaskData({
+        taskTitle: "",
+        workDuration: "",
+        lable: "",
+        description: "",
+        completed: false,
+      });
+      navigate("/");
+    } else {
+      toast.warning("please fill form correctly", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
   return (
     <div className="flex flex-col justify-center w-full max-w-lg gap-5 my-16 m-auto border-solid border-cyan-400 border-2 rounded-md p-9 text-lg md:text-sm">

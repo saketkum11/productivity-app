@@ -8,7 +8,7 @@ const SideBar = () => {
   const { isLoggedIn, logoutUser } = useAuth();
   return (
     <div className="flex flex-col  gap-5 mt-9 ">
-      <Link to="task">
+      <Link to="/">
         <h2 className="text-4xl font-bold text-cyan-500 cursor-pointer">
           PomoDoro
         </h2>

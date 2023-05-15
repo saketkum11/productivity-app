@@ -9,9 +9,10 @@ const Task = () => {
   const { state, dispatch } = useTask();
   const { tasks } = state;
   useTitle("tasks");
+
   useEffect(() => {
-    let unsub = null;
     const id = storeLoginUser?.uid;
+    let unsub = null;
     if (id) {
       const col = collection(db, "pomodoro", id, "task");
       unsub = onSnapshot(col, (colSearch) => {
@@ -29,7 +30,7 @@ const Task = () => {
     return () => {
       unsub && unsub();
     };
-  });
+  }, [storeLoginUser, dispatch]);
 
   return (
     <>
