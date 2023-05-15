@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useTask } from "../context/TaskContext";
 import { collection, onSnapshot } from "firebase/firestore";
 import { TaskCard, db } from "../server";
@@ -9,7 +9,6 @@ const Task = () => {
   const { state, dispatch } = useTask();
   const { tasks } = state;
   useTitle("tasks");
-  const [login, setLogin] = useState(storeLoginUser);
   useEffect(() => {
     let unsub = null;
     const id = storeLoginUser?.uid;
@@ -30,7 +29,7 @@ const Task = () => {
     return () => {
       unsub && unsub();
     };
-  }, [login]);
+  });
 
   return (
     <>
