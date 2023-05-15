@@ -12,8 +12,8 @@ const Setting = () => {
     lable: "" || "Game",
     completed: false,
   });
-  const { user } = useAuth();
-  const { uid } = user;
+  const { storeLoginUser } = useAuth();
+  const { uid } = storeLoginUser;
   const navigate = useNavigate();
   const { taskTitle, workDuration, lable, description } = taskData;
 

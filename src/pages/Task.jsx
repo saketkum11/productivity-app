@@ -11,8 +11,8 @@ const Task = () => {
   useTitle("tasks");
 
   useEffect(() => {
-    const id = storeLoginUser?.uid;
     let unsub = null;
+    const id = storeLoginUser?.uid;
     if (id) {
       const col = collection(db, "pomodoro", id, "task");
       unsub = onSnapshot(col, (colSearch) => {
