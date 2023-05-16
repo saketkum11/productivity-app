@@ -4,14 +4,17 @@ import { BiReset } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import { useTask } from "../context/TaskContext";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { formatingTime, useTitle } from "../server";
+import { formatingTime, updateTask, useTitle } from "../server";
 import { AiOutlinePause } from "react-icons/ai";
+import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext";
 const Timer = () => {
   const { taskID } = useParams();
+  const { storeLoginUser } = useAuth();
   const { state } = useTask();
   const { tasks } = state;
   const task = [...tasks].find((taskItem) => taskItem.id === taskID);
-  const { description, lable, taskTitle, workDuration } = task;
+  const { description, lable, taskTitle, workDuration, id } = task;
   const [change, setChange] = useState({ key: 0, playing: false, time: "" });
   useTitle(`pomodoro | ${taskTitle}`);
   return (
@@ -21,12 +24,22 @@ const Timer = () => {
           isPlaying={change.playing}
           key={change.key}
           duration={workDuration * 60}
-          colors={"rgb(17 24 39)"}
-          colorsTime={8}
+          colors={["#004777", "#F7B801", "#A30000"]}
+          colorsTime={[1, 2, 3]}
           size={300}
           strokeWidth={40}
-          onComplete={(remainingTime) => {
-            setChange({ ...change, time: remainingTime });
+          onComplete={() => {
+            toast.success("completed task", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+            updateTask({ ...task, completed: true }, storeLoginUser?.uid, id);
           }}
         >
           {({ remainingTime }) => (

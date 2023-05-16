@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 export const addTask = async (uid, data) => {
   try {
-    const docRef = collection(db, "pomodoro", uid, "task");
+    const docRef = collection(db, "productivity", uid, "task");
     await addDoc(docRef, data);
   } catch (error) {
     console.error(error);
@@ -19,7 +19,7 @@ export const addTask = async (uid, data) => {
 
 export const updateTask = async (data, uid, id) => {
   try {
-    const docRef = doc(db, "pomodoro", uid, "task", id);
+    const docRef = doc(db, "productivity", uid, "task", id);
     await updateDoc(docRef, data);
   } catch (error) {
     console.error(error);
@@ -28,7 +28,7 @@ export const updateTask = async (data, uid, id) => {
 
 export const deleteTask = async (uid, id) => {
   try {
-    const docRef = doc(db, "pomodoro", uid, "task", id);
+    const docRef = doc(db, "productivity", uid, "task", id);
     deleteDoc(docRef);
   } catch (error) {
     console.error(error);

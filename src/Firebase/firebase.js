@@ -8,12 +8,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBtBfFKzZTpa3zomEpF1FTRjcjm8xHJcHo",
-  authDomain: "pomodoro-app-75878.firebaseapp.com",
-  projectId: "pomodoro-app-75878",
-  storageBucket: "pomodoro-app-75878.appspot.com",
-  messagingSenderId: "842013451380",
-  appId: "1:842013451380:web:28bce274e99926f4bf5d21",
+  apiKey: "AIzaSyCuS-e0fYVpiW69hCXjzFjQgiykw_efqrw",
+  authDomain: "productivity-df693.firebaseapp.com",
+  projectId: "productivity-df693",
+  storageBucket: "productivity-df693.appspot.com",
+  messagingSenderId: "118778680856",
+  appId: "1:118778680856:web:01affe9bbf5d3e67f9956d",
 };
 
 // Initialize Firebase

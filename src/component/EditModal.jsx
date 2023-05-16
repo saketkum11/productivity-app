@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { updateTask } from "../server";
+import { toast } from "react-toastify";
 
 const EditModal = ({ task, setEditModalFlag }) => {
   const { storeLoginUser } = useAuth();
   const [editTask, setEditTask] = useState(task);
-  const { taskTitle, lable, description, workDuration, compeleted, id } =
-    editTask;
+  const { taskTitle, lable, description, workDuration, id } = editTask;
   const { uid } = storeLoginUser;
   const handleChange = (event) => {
     setEditTask({ ...editTask, [event.target.name]: event.target.value });
   };
   const handleSubmit = (data, uid, id) => {
-    console.log(data);
     updateTask(data, uid, id);
+    toast.info("successfully updated task", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <div>

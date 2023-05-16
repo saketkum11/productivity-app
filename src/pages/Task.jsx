@@ -14,7 +14,7 @@ const Task = () => {
     let unsub = null;
     const id = storeLoginUser?.uid;
     if (id) {
-      const col = collection(db, "pomodoro", id, "task");
+      const col = collection(db, "productivity", id, "task");
       unsub = onSnapshot(col, (colSearch) => {
         let list = [];
         colSearch?.docs?.forEach((doc) => {

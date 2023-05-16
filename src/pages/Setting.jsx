@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useTitle } from "../server";
 const Setting = () => {
   const [taskData, setTaskData] = useState({
-    taskTitle: "",
+    taskTitle: " ",
     workDuration: 0,
-    description: "",
-    lable: "" || "Game",
+    description: " ",
+    lable: " ",
     completed: false,
   });
   const { storeLoginUser } = useAuth();
@@ -22,13 +22,7 @@ const Setting = () => {
   };
   useTitle("Setting");
   const handleNewData = (uid, data) => {
-    console.log(data);
-    if (
-      data.taskTitle !== " " ||
-      data.lable !== " " ||
-      data.description !== " " ||
-      data.workDuration !== 0
-    ) {
+    if (taskData.lable !== " " || data.workDuration !== 0) {
       addTask(uid, data);
       toast.success("created task", {
         position: "top-right",
