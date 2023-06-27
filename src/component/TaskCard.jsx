@@ -37,8 +37,8 @@ const TaskCard = ({ task }) => {
   };
 
   return (
-    <section className=" p-5 mx-auto w-4/5 border-b-2 border-b-cyan-400 border-solid ">
-      <div className="flex justify-between items-center">
+    <section className=" p-5 mx-auto w-4/5 border-b-2 border-b-cyan-400 border-solid text-xs sm:text-lg">
+      <div className="flex flex-wrap  justify-between items-center">
         <div className="flex gap-2">
           <input
             type="checkbox"
@@ -63,7 +63,7 @@ const TaskCard = ({ task }) => {
             </Link>
           )}
         </div>
-        <div className="text-2xl ">
+        <div className="text-md sm:text-2xl my-4">
           <button
             onClick={handleEditForm}
             className=" hover:text-cyan-500 px-3"

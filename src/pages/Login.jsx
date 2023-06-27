@@ -17,6 +17,16 @@ const Login = () => {
   const handleLogin = ({ email, password }) => {
     loginUser({ email, password });
   };
+  const handleGuestLogin = ({ guestEmail, guestPassword }) => {
+    setUserLogin((currentuser) => {
+      return {
+        ...currentuser,
+        email: guestEmail,
+        password: guestPassword,
+      };
+    });
+    loginUser({ guestEmail, guestPassword });
+  };
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -47,6 +57,7 @@ const Login = () => {
                 id="email-address"
                 name="email"
                 type="email"
+                value={email}
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
@@ -62,6 +73,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 required
+                value={password}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
@@ -89,6 +101,17 @@ const Login = () => {
                 </svg>
               </span>
               Sign in
+            </button>
+            <button
+              onClick={() =>
+                handleGuestLogin({
+                  guestEmail: "test@gmail.com",
+                  guestPassword: 123456789,
+                })
+              }
+              className="group relative w-full flex justify-center py-2 px-4  text-sm font-medium rounded-md border-cyan-600 border-2 text-cyan-600 hover:bg-cyan-600 hover:text-white mb-3"
+            >
+              Sign as guest
             </button>
             <Link
               to="/signup"
