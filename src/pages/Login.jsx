@@ -111,7 +111,7 @@ const Login = () => {
               }
               className="group relative w-full flex justify-center py-2 px-4  text-sm font-medium rounded-md border-cyan-600 border-2 text-cyan-600 hover:bg-cyan-600 hover:text-white mb-3"
             >
-              Sign as guest
+              SignIn as guest
             </button>
             <Link
               to="/signup"
