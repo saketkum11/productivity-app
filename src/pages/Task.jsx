@@ -36,7 +36,7 @@ const Task = () => {
     <>
       <div className="min-h-screen">
         {tasks.length !== 0 ? (
-          [...tasks].reverse()?.map((task) => {
+          [...tasks]?.map((task) => {
             return (
               <>
                 <TaskCard task={task} key={task.id} />
